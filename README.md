@@ -1,162 +1,133 @@
-# � NewsFlow AI - Smart News Aggregator Dashboard
+# AI News Automator: News Discovery and Analytics Dashboard
 
-A cutting-edge real-time news aggregation platform powered by Python and Streamlit, delivering personalized news experiences with intelligent search and seamless API integration.
+> A Python and Streamlit application that retrieves news articles through NewsAPI, supports category and keyword browsing, and provides interactive views of the results.
 
-![Python](https://img.shields.io/badge/Python-3.8+-blue.svg)
-![Streamlit](https://img.shields.io/badge/Streamlit-1.28+-red.svg)
-![News API](https://img.shields.io/badge/News%20API-Integrated-green.svg)
+**Status:** Interactive application and API integration code available. Automated scheduling, generative AI analysis and production deployment are not independently verified.  
+**Technologies:** Python, Streamlit, Requests, pandas, Plotly, python-dotenv.
 
-## 📸 Application Preview
+## Executive Summary
 
-![News Automator Application](screenshots/image1.png)
+Keeping track of developments across multiple news topics involves searching sources, filtering articles and reviewing information efficiently. This project demonstrates an API-connected news discovery interface that combines news retrieval with interactive presentation.
 
-*The News Automator interface showcasing real-time news aggregation with clean, professional design*
+The repository contains a command-line retrieval script, `news_automator.py`, and a larger Streamlit application, `streamlit_enhanced_app.py`. The application supports interactive browsing and search, and includes keyword-oriented analysis and visualisation code. The project title refers to the intended AI and automation direction; it does not establish that articles are summarised by a trained or generative language model.
 
-## 🚀 Features
+## Problem and Objectives
 
-- **Real-time News Fetching**: Get the latest news from multiple categories
-- **Smart Search**: Search for specific topics across all news sources
-- **News Sources**: Browse available news sources by category
-- **Professional UI**: Clean, responsive design perfect for portfolio showcase
-- **Error Handling**: Robust error handling for API failures
-- **Configurable**: Adjustable number of articles to display
+The project addresses the practical challenge of making topical news easier to browse and inspect. Objectives include:
 
-## 🛠️ Technologies Used
+1. Retrieve news through documented API endpoints.
+2. Filter articles by categories and search terms.
+3. Present article metadata and links in an interactive dashboard.
+4. Explore simple keyword and content patterns.
+5. Handle missing credentials, empty responses and API failures appropriately.
+6. Establish a foundation for later automated summaries or scheduled workflows.
 
-- **Python 3.8+** - Core programming language
-- **Streamlit** - Interactive web application framework
-- **News API** - Real-time news data source
-- **Requests** - HTTP library for API calls
-- **python-dotenv** - Environment variable management
-- **Pandas** - Data manipulation and analysis
+## Data Source and Architecture
 
-## 📦 Installation
+The implementation uses [NewsAPI](https://newsapi.org/) for headline and article search endpoints. Results reflect NewsAPI coverage, rate limits, plan restrictions and publication metadata, rather than guaranteed complete or instant coverage.
 
-1. **Clone the repository**
-   ```bash
-   git clone <your-repo-url>
-   cd Port
-   ```
-
-2. **Install dependencies**
-   ```bash
-   pip install -r requirements.txt
-   ```
-
-3. **Set up environment variables**
-   Create a `.env` file in the project root:
-   ```env
-   API_KEY=your_news_api_key_here
-   ```
-   
-   Get your free API key from [NewsAPI.org](https://newsapi.org/register)
-
-4. **Run the application**
-   ```bash
-   streamlit run streamlit_news_app.py
-   ```
-
-5. **Open your browser**
-   Navigate to `http://localhost:8501`
-
-## 🎯 Usage
-
-The application provides an intuitive interface for accessing real-time news content (see screenshot above).
-
-### Browse by Category
-- Select from 7 news categories: Business, Entertainment, General, Health, Science, Sports, Technology
-- Adjust the number of articles to display (5-50)
-- Click "Fetch News" to get the latest articles
-
-### Search News
-- Enter any search term (e.g., "AI", "technology", "sports")
-- Get relevant articles from all sources
-- Results include article titles, descriptions, and direct links
-
-### View Sources
-- Browse available news sources by category
-- See source descriptions and direct links
-- Discover new reliable news outlets
-
-## 🏗️ Project Structure
-
-```
-Port/
-├── streamlit_news_app.py    # Main Streamlit application
-├── news_automator.py        # Core news fetching logic
-├── requirements.txt         # Python dependencies
-├── .env                     # Environment variables (create this)
-└── README.md               # This file
+```mermaid
+flowchart LR
+ A[NewsAPI endpoints] --> B[Python HTTP requests]
+ B --> C[Response and error handling]
+ C --> D[Article metadata and text]
+ D --> E[Streamlit exploration]
+ E --> F[Topic search and browsing]
+ E --> G[Keyword views and visualisations]
 ```
 
-## 🔧 Core Functions
+## Implemented Components
 
-### `get_articles_by_category(category, max_articles=20)`
-Fetches top headlines for a specific category.
+| File | Purpose |
+| --- | --- |
+| `news_automator.py` | Command-line headline retrieval and article-link printing |
+| `streamlit_enhanced_app.py` | Interactive dashboard using the NewsAPI service |
+| `requirements.txt` | Python package requirements |
+| `screenshots/image1.png` | Existing application screenshot |
+| `PROFILE.md` | Project profile information |
 
-### `get_articles_by_query(query, max_articles=20)`
-Searches for articles matching a specific query.
+The command-line script retrieves US top headlines by category. It also defines article-query and source helper functions. The Streamlit application contains separate category and keyword retrieval functions, alongside presentation and keyword processing code.
 
-### `get_news_sources(category)`
-Retrieves available news sources for a category.
+## Application Preview
 
-## 🎨 UI Features
+![News dashboard screenshot](screenshots/image1.png)
 
-- **Responsive Design**: Works on desktop and mobile devices
-- **Professional Styling**: Custom CSS for a polished look
-- **Interactive Components**: Sidebar configuration and dynamic content
-- **Error Handling**: User-friendly error messages
-- **Portfolio Ready**: Includes project information and tech stack
+This screenshot illustrates the repository's user interface. It should not be interpreted as evidence of a production deployment or automatically updated articles.
 
-## 📊 API Integration
+## Running the Application
 
-This project integrates with the [News API](https://newsapi.org/) to provide:
-- Top headlines by category
-- Search functionality across all sources
-- Source information and metadata
-- Real-time data updates
-
-## 🚀 Deployment Options
-
-### Local Development
 ```bash
-streamlit run streamlit_news_app.py
+git clone https://github.com/TeslimAdeyanju/AI-News-Automator.git
+cd AI-News-Automator
+python3 -m venv .venv
+source .venv/bin/activate
+python -m pip install -r requirements.txt
 ```
 
-### Production Deployment
-Deploy to platforms like:
-- **Streamlit Cloud** (recommended)
-- **Heroku**
-- **AWS/GCP/Azure**
-- **Docker containers**
+Create a local `.env` file with a valid NewsAPI key:
 
-## 🔐 Environment Variables
+```dotenv
+API_KEY=your-newsapi-key
+```
 
-| Variable | Description | Required |
-|----------|-------------|----------|
-| `API_KEY` | Your News API key | Yes |
+Start the dashboard:
 
-## 📝 License
+```bash
+streamlit run streamlit_enhanced_app.py
+```
 
-This project is part of a portfolio and is available for educational and demonstration purposes.
+For category retrieval from the command line:
 
-## 👨‍💻 Developer
+```bash
+python news_automator.py technology
+```
 
-**Teslim** - Portfolio Project
+Keep API keys out of Git and check service usage restrictions. The current setup has not been independently executed in this documentation revision.
 
-- Demonstrates full-stack development skills
-- Shows API integration capabilities
-- Exhibits modern Python web development
-- Highlights UI/UX design abilities
+## Analytics Scope and Evidence
 
-## 🤝 Contributing
+The application can analyse or visualise information from retrieved article metadata and text. However, this is not the same as a validated NLP classifier, generative summariser or fact-checking system. No reproducible accuracy benchmark or deployment uptime result has been established.
 
-This is a portfolio project, but feedback and suggestions are welcome!
+## Repository Structure
 
-## 📞 Contact
+```text
+README.md
+PROFILE.md
+news_automator.py
+streamlit_enhanced_app.py
+requirements.txt
+screenshots/
+    image1.png
+docs/
+    legacy-readme.md
+```
 
-For questions about this project or collaboration opportunities, please reach out!
+## Limitations
 
----
+- NewsAPI source coverage and update timing depend on its subscription and provider restrictions.
+- Search results may include duplicates, incomplete descriptions and articles lacking full text.
+- Keyword matching and visualisations should not be interpreted as verified sentiment or article relevance.
+- The title includes "Automator", but there is no demonstrated scheduled ingestion or notification service in this repository.
+- The title includes "AI", but no independently verified LLM-powered processing should be assumed.
+- Network reliability, API quotas, caching, response validation and tests need review before production use.
+- Article copyright and news-provider terms limit redistributing full text.
 
-*Built with ❤️ using Python and Streamlit*
+## Future Development
+
+1. Add stronger error and quota handling with explicit caching policies.
+2. Add deduplication, source filters and freshness labels.
+3. Implement reproducible topic or sentiment classification with human-reviewed tests.
+4. Introduce optional LLM-based summaries with source references and quality evaluation.
+5. Add scheduling only after reliable and compliant ingestion is established.
+6. Create automated tests and deployment guidance for a supported hosting platform.
+
+## Responsible Use
+
+A news discovery application helps locate and organise articles; it does not certify the accuracy, completeness or neutrality of those articles. Verify important information against original sources.
+
+## Author
+
+**Teslim Adeyanju**  
+[GitHub](https://github.com/TeslimAdeyanju) | [Portfolio](https://adeyanjuteslim.co.uk) | [LinkedIn](https://www.linkedin.com/in/adeyanjuteslimuthman)
+
+[Original README archive](docs/legacy-readme.md)
