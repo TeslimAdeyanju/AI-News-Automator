@@ -99,7 +99,7 @@ requirements.txt
 screenshots/
     image1.png
 docs/
-    legacy-readme.md
+    legacy_readme.md
 ```
 
 ## Limitations
@@ -130,4 +130,4 @@ A news discovery application helps locate and organise articles; it does not cer
 **Teslim Adeyanju**  
 [GitHub](https://github.com/TeslimAdeyanju) | [Portfolio](https://adeyanjuteslim.co.uk) | [LinkedIn](https://www.linkedin.com/in/adeyanjuteslimuthman)
 
-[Original README archive](docs/legacy-readme.md)
+[Original README archive](docs/legacy_readme.md)
